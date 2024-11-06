@@ -1,31 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Function Prototypes
+
 void quickSort(int arr[], int low, int high);
 void selectionSort(int arr[], int n);
 void heapSort(int arr[], int n);
 void heapify(int arr[], int n, int i);
 
-// Main Function
+
 int main() {
     int arr[10];
     int choice;
 
-    // Input the array from user
+    
     printf("Enter 10 numbers to sort:\n");
     for (int i = 0; i < 10; i++) {
         scanf("%d", &arr[i]);
     }
 
-    // Display the original array
+   
     printf("Original Array:\n");
     for (int i = 0; i < 10; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 
-    // Ask user to choose sorting algorithm
+   
     printf("Choose sorting algorithm:\n");
     printf("1. Quick Sort\n");
     printf("2. Selection Sort\n");
@@ -33,7 +33,7 @@ int main() {
     printf("Enter your choice (1/2/3): ");
     scanf("%d", &choice);
 
-    // Call corresponding sorting function
+   
     switch (choice) {
         case 1:
             quickSort(arr, 0, 9);
@@ -49,7 +49,7 @@ int main() {
             return 1;
     }
 
-    // Display the sorted array
+    
     printf("Sorted Array:\n");
     for (int i = 0; i < 10; i++) {
         printf("%d ", arr[i]);
@@ -58,7 +58,8 @@ int main() {
 
     return 0;
 }
-/ Selection Sort Function
+
+
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIndex = i;
@@ -67,10 +68,39 @@ void selectionSort(int arr[], int n) {
                 minIndex = j;
             }
         }
-        // Swap the found minimum element with the first element
+       
         int temp = arr[minIndex];
         arr[minIndex] = arr[i];
         arr[i] = temp;
     }
 }
 
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivot = arr[high];
+        int i = low - 1;
+
+       
+        for (int j = low; j <= high - 1; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                // Swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        
+       
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+
+        int pi = i + 1;
+
+       
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
