@@ -5,7 +5,6 @@
 
 void quickSort(int arr[], int low, int high);
 void selectionSort(int arr[], int n);
-void heapSort(int arr[], int n);
 void heapify(int arr[], int n, int i);
 
 
@@ -30,7 +29,6 @@ int main() {
     printf("Choose sorting algorithm:\n");
     printf("1. Quick Sort\n");
     printf("2. Selection Sort\n");
-    printf("3. Heap Sort\n");
     printf("Enter your choice (1/2/3): ");
     scanf("%d", &choice);
 
@@ -41,9 +39,6 @@ int main() {
             break;
         case 2:
             selectionSort(arr, 10);
-            break;
-        case 3:
-            heapSort(arr, 10);
             break;
         default:
             printf("Invalid choice.\n");
