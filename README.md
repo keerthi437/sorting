@@ -78,6 +78,18 @@ void quickSort(int arr[], int low, int high) {
                 arr[j] = temp;
             }
         }
+          // Swap arr[i + 1] and arr[high] (pivot)
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        int pi = i + 1;
+
+        // Recursively sort the subarrays
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
        void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIndex = i;
